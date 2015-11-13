@@ -14,8 +14,8 @@ package
 	 */
 	public class HarpPlayer extends MovieClip
 	{
-		public var harp : Harp;
-		public var harpsArray : Vector.<Harp>;
+		public var harp : Note;
+		public var harpsArray : Vector.<Note>;
 		
 		private var harpSound1 : HarpSound1 = new HarpSound1();
 		private var harpSound2 : HarpSound2 = new HarpSound2();
@@ -30,7 +30,7 @@ package
 		
 		private var waitTimer : Timer;
 		
-		public var canShoot : Boolean = true;
+		public var canPlay : Boolean = true;
 		
 		public function HarpPlayer() 
 		{
@@ -41,7 +41,7 @@ package
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
-			harpsArray = new Vector.<Harp>;
+			harpsArray = new Vector.<Note>;
 			
 			waitTimer = new Timer(425, 1);
 			waitTimer.addEventListener(TimerEvent.TIMER, waitForAttack);
@@ -54,11 +54,19 @@ package
 		{
 			if (waitTimer.currentCount < 2)
 			{
-				canShoot = true;
+				canPlay = true;
 				waitTimer.reset();
 			}
 		}
 		
+		private function playNote():void
+		{
+			canPlay = false;
+			waitTimer.start();
+			addChild(harp);
+			harpsArray.push(harp);
+			soundChannel.stop();
+		}
 		
 		private function keyDown(e:KeyboardEvent):void 
 		{
@@ -66,13 +74,8 @@ package
 			{
 				if (canShoot)
 				{
-					canShoot = false;
-					waitTimer.start();
-					harp = new Harp(0,1);
-					addChild(harp);
-					harpsArray.push(harp);
-					trace("play the sound!!!");
-					soundChannel.stop();
+					harp = new Note(0, 1);
+					playNote();
 					soundChannel = harpSound1.play();
 				}
 				
@@ -81,13 +84,8 @@ package
 			{
 				if (canShoot)
 				{
-					canShoot = false;
-					waitTimer.start();
-					harp = new Harp(50,2);
-					addChild(harp);
-					harpsArray.push(harp);
-					trace("play the sound!!!");
-					soundChannel.stop();
+					harp = new Note(50, 2);
+					playNote();
 					soundChannel = harpSound2.play();
 				}
 			}
@@ -95,13 +93,8 @@ package
 			{
 				if (canShoot)
 				{
-					canShoot = false;
-					waitTimer.start();
-					harp = new Harp(100,1);
-					addChild(harp);
-					harpsArray.push(harp);
-					trace("play the sound!!!");
-					soundChannel.stop();
+					harp = new Note(100, 1);
+					playNote();
 					soundChannel = harpSound3.play();
 				}
 			}
@@ -109,13 +102,8 @@ package
 			{
 				if (canShoot)
 				{
-					canShoot = false;
-					waitTimer.start();
-					harp = new Harp(150,2);
-					addChild(harp);
-					harpsArray.push(harp);
-					trace("play the sound!!!");
-					soundChannel.stop();
+					harp = new Note(150, 2);
+					playNote();
 					soundChannel = harpSound4.play();
 				}
 			}
@@ -123,13 +111,8 @@ package
 			{
 				if (canShoot)
 				{
-					canShoot = false;
-					waitTimer.start();
-					harp = new Harp(200,1);
-					addChild(harp);
-					harpsArray.push(harp);
-					trace("play the sound!!!");
-					soundChannel.stop();
+					harp = new Note(200, 1);
+					playNote();
 					soundChannel = harpSound5.play();
 				}
 			}
@@ -137,13 +120,8 @@ package
 			{
 				if (canShoot)
 				{
-					canShoot = false;
-					waitTimer.start();
-					harp = new Harp(250,2);
-					addChild(harp);
-					harpsArray.push(harp);
-					trace("play the sound!!!");
-					soundChannel.stop();
+					harp = new Note(250, 2);
+					playNote();
 					soundChannel = harpSound6.play();
 				}
 			}
@@ -151,13 +129,8 @@ package
 			{
 				if (canShoot)
 				{
-					canShoot = false;
-					waitTimer.start();
-					harp = new Harp(300,1);
-					addChild(harp);
-					harpsArray.push(harp);
-					trace("play the sound!!!");
-					soundChannel.stop();
+					harp = new Note(300,1);
+					playNote();
 					soundChannel = harpSound7.play();
 				}
 			}
@@ -165,13 +138,8 @@ package
 			{
 				if (canShoot)
 				{
-					canShoot = false;
-					waitTimer.start();
-					harp = new Harp(350,2);
-					addChild(harp);
-					harpsArray.push(harp);
-					trace("play the sound!!!");
-					soundChannel.stop();
+					harp = new Note(350,2);
+					playNote();
 					soundChannel = harpSound8.play();
 				}
 			}

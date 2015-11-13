@@ -6,13 +6,13 @@ package
 	 * ...
 	 * @author Niek Schoone
 	 */
-	public class Harp extends Sprite
+	public class Note extends Sprite
 	{
 		public var notes : NootAnimations;
 		
 		private var gravity : Number = 6;
 		
-		public function Harp(PosX : int, noteType : int)
+		public function Note(PosX : int, noteType : int)
 		{
 			notes = new NootAnimations();
 			addChild(notes);
